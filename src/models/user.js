@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) =>{
             autoIncrement: true,
         },
         name:{
-            type: DataTypes.STRING  (500),
+            type: DataTypes.STRING(500),
             allowNull: false
         },
         email:{

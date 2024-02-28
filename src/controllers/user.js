@@ -1,5 +1,8 @@
 const { response, request} = require ("express");
 const { sequelize, Users: userModel } = require ("../models");
+const { keyToken } = require ("../config");
+const jwt = require ("jsonwebtoken");
+
 
 const creatUser = async(req = request, res = response) => {
     const transaction = await sequelize.transaction();
@@ -37,6 +40,12 @@ const creatUser = async(req = request, res = response) => {
     }
 };
 
+const login = async(req= request, resp= response) =>{
+    const token = jwt.sign({ id:1 }, keyToken, { expiresIn: "1d"});
+    resp.json({ token });
+}
+
 module.exports ={
         creatUser,
+        login
 };
